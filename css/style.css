@@ -183,6 +183,7 @@ button:hover {
     color: #000;
     letter-spacing: 3px;
     word-spacing: 2px;
+    transition: all .3s ease;
 }
 
 .see-all a:hover {
@@ -194,6 +195,7 @@ button:hover {
 
 .creations__card {
     position: relative;
+    overflow: hidden;
 }
 
 .creations__card::after {
@@ -203,21 +205,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.creations__img img {
-    width: 100%;
-    vertical-align: top;
-}
-
-.creations__img::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.4));
+    transition: background .3s ease;
 }
 
 .creations__card:hover:after {
@@ -230,6 +218,27 @@ button:hover {
     cursor: pointer;
     z-index: 1;
 }
+
+.creations__img img {
+    width: 100%;
+    vertical-align: top;
+    transition: all .5s ease;
+}
+
+.creations__card:hover img {
+    transform:scale(1.1) rotate(1deg);
+}
+
+.creations__img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.4));
+}
+
 
 .creations__title {
     position: absolute;
@@ -281,6 +290,57 @@ footer .menu {
 }
 
 /* Menu Mobile */
+
+.button-menu {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
+
+.button-menu span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.button-menu span:nth-child(1) {
+    top: 0px;
+  }
+  
+.button-menu span:nth-child(2) {
+    top: 10px;
+  }
+  
+.button-menu span:nth-child(3) {
+    top: 20px;
+  }
+
+.button-menu.open span:nth-child(1) {
+    top: 10px;
+    transform: rotate(135deg);
+  }
+
+.button-menu.open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+  }
+  
+.button-menu.open span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-135deg);
+  }
+  
 
 .sidebar {
    position: absolute;
@@ -345,9 +405,6 @@ footer .menu {
         display: block;
     }
 
-    .header .button-menu--open {
-        content: url(../images/icon-close.svg);
-    }
 
     .header .button-menu:hover {
         cursor: pointer;
@@ -376,6 +433,7 @@ footer .menu {
     .see-all {
         position: relative;
         top: 0;
+        right: 0;
         display: flex;
         justify-content: center;
     }
